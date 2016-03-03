@@ -1,0 +1,416 @@
+# Suneet Dewan and Sam Spaeth
+# Text file that users can interact with to get the analysis that they want as output
+
+
+
+############################# BASIC SETUP #########################################################
+###################################################################################################
+############################# INPUT ###############################################################
+# Must always be a csv file. This will be the csv file you wish to run simple analysis on.
+csv_file_name: "assessment-2014-10-3.csv"
+
+
+############################# OUTPUT ##############################################################
+# If you simply want to work with a csv of the cleaned data. (Every description is formatted the 
+# 	same and they are much more easily grouped by simple food names or phrases.)
+output_clean: False
+
+# Choose how you will see the analysis. Either in the form of a new .csv file 
+# 	or printed in terminal.
+output_terminal: True
+output_csv: False
+
+# Allow for a root name to be able to group .csv output. If you ran it on fall '09' data, the 
+#	base_name could be "fall_09"
+base_name: "test1"
+
+
+############################# PERCENT #############################################################
+# A way to convert % back into dollars (i.e. - increasing our real food percentage to 35% would mean
+#	 shifting $X to real food) 
+use_perc: True
+perc_shift: 35
+
+
+############################# NEW CATEGORIES ######################################################
+# create new categories. Start with '[' and end with ']'. Each entry of form 
+#	["category", {'food1_in_category', 'food2', ...}]
+# This will replace the old categories with the new ones
+create_new_category: False
+new_categories: [["fruit", {"apple", "tomato"}], ["condiments", {"mayo", "relish"}]]
+
+
+############################# DIFFERENT ANALYSES ##################################################
+###################################################################################################
+############################# TOP N PER CATEGORY ##################################################
+top_n_per_category: False
+top_n: 10
+
+############################# KEY FOOD ITEMS ######################################################
+# Example: What % of the overall food budget is meat + poultry ? 
+use_key_words: False
+
+# Figure out key words for meat and poultry
+key_words: ["meat", "poultry"] 
+
+
+############################# KEY FOOD ITEM in CATEGORY ########################################### 
+# example: What % of the 'grocery' section is 'pasta'?
+analyze_one_category: False
+category_to_analyze: "grocery"
+item_to_analyze: "pasta"
+
+
+############################# PERCENT REAL PER CATEGORY ###########################################
+# This function returns a table which has the % of real vs non-real food for each category.
+perc_real_per_category: False
+
+
+############################# REAL V NON-REAL #####################################################
+# This function just returns a table which shows how much of the total spending is on real and 
+#	non-real food including the percentages
+real_v_nonreal: True
+
+############################# DATA CLEANING INFORMATION ###########################################
+###################################################################################################
+############################# DICTIONARY of SYNONYMS ##############################################
+# Key terms found in the spreedsheets. starts with '[', ends with ']', 
+#	and every entry has form ['thing', {'synonym1', 'synonym2', ...}] 
+# 	when continuing the list, make sure each line ends with a comma, ','.
+key_terms: [["achiote", {"achiote"}],
+	["allspice",{"allspice"}],
+	["anchovy",{"anchovy"}],
+	["apple",{"appl","apple", "apples", "zestar"}],
+	["applesauce",{"applesauce"}],
+	["apricot",{"apricot"}],
+	["aronia",{"aronia"}],
+	["artichoke",{"artichoke"}],
+	["arugula",{"arugula"}],
+	["asparagus",{"asparagus"}],
+	["avocado",{"avocado"}],
+	["bacon",{"bacon", "bacuns"}],
+	["bagel",{"bagel", "bgl"}],
+	["baguette",{"baguette"}],
+	["bamboo",{"bamboo"}],
+	["banana",{"banana", "bananas"}],
+	["barley",{"barley"}],
+	["barqs",{"barqs"}],
+	["basil",{"basil"}],
+	["bean",{"bean"}],
+	["beef",{"beef"}],
+	["beets",{"beets"}],
+	["blackberry",{"blackberry", "black berry", "blackberry"}],
+	["blueberry", {"blueb", "blueberries", "blueberry"}],
+	["bagel",{"bagel", "bgl"}],
+	["batter",{"batter"}],
+	["bratwurst", {"brat", "bratwurst"}],
+	["bread",{"bread", "loaves", "flatbread", "pita", "bun", "rt", "sourdough"}],
+	["breadstick",{"breadstick"}],
+	["brownie",{"brownie"}],
+	["brussel",{"brussel" "brussel sprouts"}],
+	["bun",{"bun"}],
+	["butter",{"butter"}],
+	["buttermilk",{"buttermilk"}],
+	["cabbage",{"cabbage"}],
+	["cake",{"cake"}],
+	["cantaloupe",{"cantaloupe"}],
+	["caraway",{"caraway"}],
+	["cardamom",{"cardamom"}],
+	["caramel",{"caramel", "carmel"}],
+	["carrots",{"carrots", "carrot"}],
+	["cashew",{"cashew"}],
+	["catfish",{"catfish"}],
+	["cauliflower",{"cauliflower"}],
+	["cayenne",{"cayenne"}],
+	["celeriac",{"celeriac"}],
+	["celery",{"celery"}],
+	["cereal",{"cereal", "cerl"}],
+	["cheese",{"cheese", "chz", "chs", "brick", "cheddar", "ched","provalone","provolone"}],
+	["cherry",{"cherry", "cherries"}],
+	["chestnut",{"chestnut"}],
+	["chicken",{"chicken"}],
+	["chili",{"chile", "chili"}],
+	["chip",{"chip", "chips"}],
+	["chives",{"chive"}],
+	["chocolate",{"choc", "chocolate"}],
+	["churro",{"churro"}],
+	["ciabata",{"ciabata"}],
+	["cilantro",{"cilantro"}],
+	["cinnamon", {"cinn", "cinnamon"}],
+	["cake",{"cake"}],
+	["clam",{"clam"}],
+	["clementine",{"clementine"}],
+	["cloves",{"cloves"}],
+	["coco",{"coco", "cocoa"}],
+	["coconuts",{"coconuts"}],
+	["cod",{"cod"}],
+	["coffee",{"coffee", "espresso", "fappuccino", "decaf", "cappucino", "capp", "dark roast", "french roast"}],
+	["collards",{"collards"}],
+	["cookie",{"cookie"}],
+	["coriander",{"coriander"}],
+	["corn",{"corn"}],
+	["couscous",{"couscous"}],
+	["cracker",{"cracker"}],
+	["cranberry",{"cranberry", "cranberries"}],
+	["cream",{"cream"}],
+	["croissant",{"crsnt", "croissant"}],
+	["crust",{"crust"}],
+	["cucumber",{"cucumber"}],
+	["cumin",{"cumin"}],
+	["curry",{"curry"}],
+	["daikon",{"daikon"}],
+	["decoration",{"decoration"}],
+	["dill",{"dill"}],
+	["doughnut",{"doughnut", "dnt"}],
+	["dough",{"dough", "doh"}],
+	["doubleshot",{"doubleshot"}],
+	["dressing",{"dressing"}],
+	["edamame",{"edamame"}],
+	["egg",{"egg"}],
+	["eggplant",{"eggplant"}],
+	["eichtens",{"eichtens"}],
+	["fanta",{"fanta"}],
+	["farro",{"farro"}],
+	["fennel",{"fennel"}],
+	["fish",{"fish"}],
+	["flake", {"flake","flakes"}],
+	["flaxseed",{"flaxseed"}],
+	["flour",{"flour", "flr"}],
+	["flavor",{"flavor", "flvr"}],
+	["filling",{"filling", "flng"}],
+	["fillet", {"filet", "fillet","fillets", "filt"}],
+	["fudge",{"fudge"}],
+	["garlic",{"garlic"}],
+	["gatorade",{"gatorade"}],
+	["ginger",{"ginger"}],
+	["graham", {"graham", "grahams"}],
+	["grapefruit",{"grapefruit"}],
+	["grapes",{"grapes"}],
+	["gummy",{"gummy"}],
+	["half and half",{"half and half", "1/2 & 1/2", "1/2 and 1/2", "half & half"}],
+	["ham",{"ham"}],
+	["hoisin",{"hoisin"}],
+	["honey",{"honey"}],
+	["honeydew",{"honeydew"}],
+	["hot dog" ,{"hot dog", "smart dog"}],
+	["icing",{"icing"}],
+	["jalapeño",{"jalapeño", "jalapeno" }],
+	["jelly",{"jelly"}],
+	["jicama",{"jicama"}],
+	["juice",{"juice", "juc"}],
+	["kale",{"kale"}],
+	["ketchup",{"ketchup"}],
+	["kiwi",{"kiwi"}],
+	["kiwistrawberry",{"kiwistrawberry"}],
+	["lasagna",{"lasagna"}],
+	["leek",{"leek" "leeks"}],
+	["lemon",{"lemon", "lemons"}],
+	["lentil", {"lentil", "lentils"}],
+	["lettuce",{"lettuce"}],
+	["lettuceleaf",{"lettuceleaf"}],
+	["lime",{"lime", "limes"}],
+	["lobster",{"lobster"}],
+	["loin", {"loin", "loins","tenderloin"}],
+	["m&m",{"m&m", "m & m", "m and m"}],
+	["malt",{"malt"}],
+	["mango",{"mango"}],
+	["manicotti",{"manicotti"}],
+	["maple",{"maple"}],
+	["margarine",{"margarine"}],
+	["marjoram",{"marjoram"}],
+	["marshmallow",{"marshmallow"}],
+	["mayonnaise",{"mayonnaise"}],
+	["melon",{"melon"}],
+	["mesclun",{"mesclun"}],
+	["microgreens",{"microgreens"}],
+	["milk",{"milk", "skim"}],
+	["mint",{"mint"}],
+	["miso",{"miso"}],
+	["molasses",{"molasses"}],
+	["mountain dew",{"mountain dew", "dew", "kickstart"}],
+	["muffin", {"muffin", "mfn", "muffn"}],
+	["mug",{"mug"}],
+	["mushroom",{"mushroom", "mushrooms"}],
+	["mustard",{"mustard"}],
+	["napa",{"napa"}],
+	["noodle",{"noodle"}],
+	["nuts",{"nuts", "nut"}],
+	["oatmeal",{"oatmeal", "oatml"}],
+	["oats",{"oats"}],
+	["onion",{"onion", "onions"}],
+	["okra",{"okra"}],
+	["olive",{"olive"}],
+	["orange", {"orange", "oranges", "orng"}],
+	["oregano",{"oregano"}],
+	["pan spray",{"pan spray"}],
+	["paprika",{"paprika"}],
+	["parsely",{"parsely"}],
+	["parsnips",{"parsnips"}],
+	["pasta",{"pasta", "ravioli", "spaghetti"}],
+	["pea",{"pea"}],
+	["peach",{"peach"}],
+	["peachies",{"peachies"}],
+	["peanut",{"peanut"}],
+	["pear",{"pear"}],
+	["pecan",{"pecan"}],
+	["pepper", {"pepeprs", "pepper", "pepr", "peppers"}],
+	["pepperoncini",{"pepperoncini"}],
+	["pepperoni",{"pepperoni"}],
+	["pickle",{"pickle"}],
+	["pie",{"pie"}],
+	["pineapple", {"pineapp", "pineapple"}],
+	["pistachio",{"pistachio"}],
+	["pizza",{"pizza"}],
+	["plum",{"plum"}],
+	["pollock",{"pollock"}],
+	["pomegranate",{"pomegranate"}],
+	["poppy",{"poppy"}],
+	["pork",{"pork"}],
+	["portabella",{"portabella"}],
+	["potato",{"potato", "potatoes", "yukon"}],
+	["poultry",{"poultry"}],
+	["power c",{"power c", "powerc"}],
+	["powerade" ,{"powerade" }],
+	["pretzel",{"pretzel"}],
+	["pumpkin",{"pumpkin"}],
+	["quinoa",{"quinoa"}],
+	["racicchio",{"racicchio"}],
+	["radish",{"radish", "radishes"}],
+	["raisin", {"raisin", "raisins"}],
+	["raspberry", {"raspberries", "raspberry"}],
+	["rhubarb",{"rhubarb"}],
+	["rooibos",{"rooibos"}],
+	["roll",{"roll"}],
+	["rosemary",{"rosemary"}],
+	["rutanagas",{"rutanagas"}],
+	["sage",{"sage"}],
+	["salad",{"salad"}],
+	["salami",{"salami"}],
+	["salmon",{"salmon"}],
+	["sauce",{"sauce"}],
+	["sauerkraut",{"sauerkraut"}],
+	["sausage",{"sausage"}],
+	["scallops",{"scallops"}],
+	["seasoning",{"seasoning"}],
+	["seed", {"seed","seeds"}],
+	["sunflower",{"sunflower"}],
+	["shallots",{"shallots"}],
+	["shortening",{"shortening", "shtng"}],
+	["shrimp",{"shrimp"}],
+	["sierra mist",{"sierra"}],
+	["soba",{"soba"}],
+	["soy",{"soy"}],
+	["soybean",{"soybean"}],
+	["spanakopita",{"spanakopita"}],
+	["sparkling water",{"sparkling water"}],
+	["syrup",{"syrup"}],
+	["spice",{"spice"}],
+	["spinach",{"spinach"}],
+	["sprite",{"sprite"}],
+	["sprinkle",{"sprnkl", "sprinkle"}],
+	["sprouts",{"sprouts"}],
+	["squash",{"squash", "butternut"}],
+	["strawbery", {"strawberries","strawberry","strwbrry", "straw"}],
+	["strudel",{"strdl", "strudel"}],
+	["sugar", {"sgr","sug","sugar"}],
+	["sushi",{"sushi"}],
+	["swiss chard",{"swiss chard"}],
+	["szechuan",{"szechuan"}],
+	["tahini",{"tahini"}],
+	["tahitian gold",{"tahitian gold"}],
+	["tamari",{"tamari"}],
+	["tamarind",{"tamarind"}],
+	["tart",{"tart"}],
+	["tea",{"tea", "chai", "lipton", "chamomile", "earl grey", "english breakfast", "jasmine", "mint green"}],
+	["terragon",{"terragon"}],
+	["tempeh",{"tempeh"}],
+	["tempurah",{"tempurah"}],
+	["thigh", {"thigh", "thighs"}],
+	["thyme",{"thyme"}],
+	["tofu",{"tofu"}],
+	["tomatillo",{"tomatillo"}],
+	["tomato",{"tomato", "tomatoes"}],
+	["topping", {"tpng", "topping"}],
+	["tortilla",{"tortilla"}],
+	["tropicana",{"tropicana"}],
+	["tuna",{"tuna"}],
+	["turkey",{"turkey"}],
+	["tumeric",{"tumeric"}],
+	["turinp", {"turnip","turnips"}],
+	["turnover",{"turnover"}],
+	["udon",{"udon"}],
+	["vanilla",{"vanilla"}],
+	["veal",{"veal"}],
+	["vinegar",{"vinegar"}],
+	["vitamin",{"vitamin"}],
+	["walnut",{"walnut"}],
+	["wasabi",{"wasabi"}],
+	["watermelon",{"watermelon"}],
+	["white berry",{"whtbrries", "white berries", "white berry", "whiteberry"}],
+	["wine",{"wine"}],
+	["wonton",{"wonton"}],
+	["wrap",{"wrap"}],
+	["yam",{"yam"}],
+	["yeast",{"yeast"}],
+	["zuccini",{"zuccini"}]]
+
+# Priority
+priority_key_terms: [["apple cider",{"apple cider", "cider"}],
+	["apple juice",{"apple juice"}],
+	["asian greens",{"asian greens"}],
+	["baking poweder",{"baking poweder"}],
+	["baking soda",{"baking soda"}],
+	["banana chips",{"banana chips"}],
+	["banana cholcolate",{"banana cholcolate"}],
+	["bay leaves",{"bay leaves"}],
+	["bok choy",{"bok choy"}],
+	["bottled water",{"bottled water"}],
+	["brown sugar",{"sugar brown", "brown sugar"}],
+	["burger patty",{"burger patty"}],
+	["candy corn",{"candy corn"}],
+	["cherry tomato",{"cherry tomato", "cherry tomatoes"}],
+	["chips",{"chips"}],
+	["chocolate milk",{"chocolate milk"}],
+	["chocolate sauce",{"chocolate sauce"}],
+	["coconut milk",{"milk coconut", "coconut milk"}],
+	["conversation hearts",{"conversation hearts"}],
+	["corn dog",{"corn dog"}],
+	["cranberry apple juice",{"cranberry apple juice"}],
+	["creamer",{"creamer"}],
+	["dr pepper",{"dr pepper"}],
+	["dulce de leche",{"dulce de leche"}],
+	["egg roll",{"egg roll"}],
+	["fortune cookie",{"fortune cookie", "cookie fortune"}],
+	["green breans",{"green breans"}],
+	["ground beef",{"ground beef"}],
+	["hot dog",{"hot dog"}],
+	["ice cream",{"ice cream"}],
+	["lemonade",{"lemonade"}],
+	["lemongrass",{"lemongrass"}],
+	["mint chocolate",{"mint chocolate"}],
+	["naked juice",{"naked juice"}],
+	["nutmeg",{"nutmeg"}],
+	["oil",{"oil", "olive oil"}],
+	["onion ring",{"onion ring"}],
+	["orange juice",{"orange juice"}],
+	["peanut butter",{"peanut butter", "pnut btr"}],
+	["peppercorn",{"peppercorn", "black pepper", "pepper blk", "pepper wht", "pepr blk", "white pepper"}],
+	["pepsi cola",{"pepsi cola", "coca cola" "coke" "cocacola" "cherry coke" "cocacola" "pepsi"}],
+	["pot sticker",{"pot sticker"}],
+	["potatoes sweet",{"potatoes sweet"}],
+	["raisin bran",{"raisin bran"}],
+	["raspberry twigs",{"raspberry twigs"}],
+	["rice",{"rice"}],
+	["salt",{"salt"}],
+	["soft serve",{"soft serve"}],
+	["sour cream",{"sour cream"}],
+	["soy sauce",{"soy sauce"}],
+	["spring roll",{"spring roll", "roll spring"}],
+	["starch corn",{"starch corn", "corn starch"}],
+	["sun dried tomatoes",{"sun dried tomatoes"}],
+	["tomato paste",{"tomato paste", "paste tomato"}],
+	["vitamin water",{"vitamin water"}],
+	["waffle",{"waffle"}],
+	["whipped cream",{"whip cream", "whipped cream"}],
+	["wild rice",{"wild rice", "wild"}],
+	["yogurt",{"yogurt"}]]
